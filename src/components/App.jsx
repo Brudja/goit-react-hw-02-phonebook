@@ -21,7 +21,8 @@ export class App extends Component {
     );
   };
 
-  handleSubmit = (name) => {
+  handleSubmit = (event) => {
+    event.preventDefault();
     if (this.state.contacts.some(contact => contact.name === this.state.name)) {
        return alert(`${this.state.name} is already in contacts`);
      }
@@ -30,9 +31,10 @@ export class App extends Component {
         contacts: [
           ...prevState.contacts,
           { name:this.state.name, number:this.state.number, id: nanoid() },
-        ]
+        ],
       };
     });
+    // this.setState({ name: "", number:"" })
   };
 
   btnDeleteConatact = id => {

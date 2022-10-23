@@ -7,40 +7,41 @@ export class ContactForm extends Component {
     number: this.props.contacts.number
   };
 
-  clearInput = event => {
-    event.preventDefault();
-    this.props.submit(this.state.name);
+  // clearInput = event => {
+  //   event.preventDefault();
+  //   this.props.submit();
     
     // this.setState({
     //   name: '',
     //   number: '',
     // });
-  };
+  // };
 
 
 
   render() {
+    
     return (
-      <form onSubmit={this.clearInput}>
-        <input
-          // value={this.state.name}
+      <form onSubmit={this.props.submit}>
+        <label>Name<br/><input
+          value={this.state.name}
           type="text"
           name="name"
           onChange={this.props.chengeName}
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
-        />
+        /></label>
         <br/>
-        <input
-        // value={this.state.number}
+        <label>Number<br/><input
+          value={this.state.number}
           type="tel"
           name="number"
           onChange={this.props.chengeName}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
-        />
+        /></label>
         <br/>
         <button style={{
           color:"green",
