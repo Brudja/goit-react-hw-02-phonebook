@@ -16,25 +16,24 @@ export class App extends Component {
   };
 
   handleFilter = () => {
+    console.log(this.state.contacts)
     return this.state.contacts.filter(element =>
       element.name.toLowerCase().includes(this.state.filter.toLowerCase())
     );
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    if (this.state.contacts.some(contact => contact.name === this.state.name)) {
-       return alert(`${this.state.name} is already in contacts`);
+  handleSubmit = (name, number) => {
+    if (this.state.contacts.some(contact => contact.name === name)) {
+       return alert(`${name} is already in contacts`);
      }
     this.setState(prevState => {
       return {
         contacts: [
           ...prevState.contacts,
-          { name:this.state.name, number:this.state.number, id: nanoid() },
+          { name, number, id: nanoid() },
         ],
       };
     });
-    // this.setState({ name: "", number:"" })
   };
 
   btnDeleteConatact = id => {
